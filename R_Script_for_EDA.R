@@ -40,7 +40,7 @@ ggplot(df, aes(x = Sex, y = Age)) + geom_boxplot() +
 # Correlation analysis
 correlation_matrix <- cor(df %>% select_if(is.numeric), use = "complete.obs")
 # Custom color scale
-col <- colorRampPalette(c("blue", "white", "red"))(200)
+col <- colorRampPalette(c("blue","steelblue","white", "red","firebrick"))(1000)
 corrplot(correlation_matrix, method = "color", col = col)
 
 # Advanced Visualization: Facets, Violin Plots, and Pair Plots
