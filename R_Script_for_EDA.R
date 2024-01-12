@@ -38,7 +38,9 @@ ggplot(df, aes(x = Sex, y = Age)) + geom_boxplot() +
 
 # Correlation Analysis
 correlation_matrix <- cor(df %>% select_if(is.numeric), use = "complete.obs")
-corrplot(correlation_matrix, method = "color")
+# Custom color scale
+col <- colorRampPalette(c("blue", "white", "red"))(200)
+corrplot(correlation_matrix, method = "color", col = col)
 
 # Advanced Visualization: Facets, Violin Plots, and Pair Plots
 p1 <- ggplot(df, aes(x = Sex, y = Age)) + geom_violin(trim = FALSE) + theme_minimal()
@@ -72,3 +74,10 @@ write.csv(df, "titanic_modified.csv")
 
 # Saving the Improved Script
 writeLines(capture.output(cat("# Improved R Script for Data Analysis", "\n", sep = "\n")), "improved_data_analysis_script.R")
+
+
+# keep track of versions
+sessionInfo()
+writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
+
+# END
